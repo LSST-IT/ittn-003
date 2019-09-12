@@ -150,3 +150,56 @@ which requires manual synchronization and is probably error prone.
    10.0.103.107 comcam-hcu02.test comcam-hcu02
 
 
+No Direct Routing For RFC1918 Subnet(s)
+---------------------------------------
+
+Currently, the primary means of accessing hosts in private address space is via
+a bastion host named ``stargate.lsst.org``.  This host also acts as a gateway
+for all of the current private address subnets and runs NAT.  There is now
+routing, without NAT, between the lab subnets and the rest of the network. In
+addition, there is no VPN facility or other mechanism supported for tunneling
+directly into the private subnets.  This leads to a number of usability issues.
+
+ssh private key exposure on a public host
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Users must preform an extra ssh "hop" through the bastion host for shell
+access.  This is only a minor convenience for users with enough technically skill
+to use an ``ssh-agent``.  However, many users will likely result to having to
+copy ssh private keys onto the bastion host.
+
+ssh port forward is tedious and does not always work
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to attempt to access http/s services, ssh port forwarding for each
+service is required. Eg.,
+
+.. code-block:: yaml
+
+   ssh stargate.lsst.org -A -L4430:10.0.103.101:443
+
+This will work for some but not all www applications and it will fail to
+provide a usable HTML interface if FQDN URLs and/or ports are embedded in the
+HTML or Javascript.  It is also tedious to setup, especially for accessing
+multiple end points.
+
+end-users are using remote display from the bastion host (nx)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Due to the limitations and inconvenience of ssh port forwarding, end users are
+resorting to remote displaying a web browser or a complete desktop environment.
+While this does largely resolve the problem for end-users it may start to put
+resource pressure on the bastion host. If end users are allowed to do this
+(which is necessary in order to for perform work), which effectively bypasses
+all access control, the use of a bastion host is not providing any value to end
+users or administrators.
+
+hosts are bridging public and rfc1918 subnets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Another work around to the lack of layer3 access between end users systems and
+lab machines, is to configure an additional network interface in the large
+public ``/23`` subnet which is mixed servers and desktops.  As the need for
+external access to services is growing, it seems probably that this practice
+will become more common and defeats the purpose of having an isolated "lab"
+environment.
