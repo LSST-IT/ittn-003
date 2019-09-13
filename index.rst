@@ -19,6 +19,17 @@ towards a design that more accurately reflects the environment at the Base and
 Summit, combined with refactoring DNS, would resolve many of the usability and
 management limitation with the current architecture.
 
+Goals
+-----
+
+* Migrate the lab subnets to routable IP address space
+* Provide DHCP and forward/reverse name resolution for lab subnets
+* Support automated provisioning with ``foreman`` See: `ITTN-002
+  <https://ittn-002.lsst.io/>`_
+* Avoid disturbing all non-lab related IT systems. Eg., desktop users,
+  services, etc.
+
+
 Known Issues
 ============
 
