@@ -7,6 +7,22 @@
 Known Issues
 ============
 
+Addresing Is Inconsistent With Summit/Base Production Network
+-------------------------------------------------------------
+
+It has been stated that the primary reason for using RFC1918 address space
+in the lab environment was to be consistent with the production network
+design.  The current summit/base networks primarily use routable IP address
+space and it is our understanding that there is no intention to migrate to
+largely RFC1918 address space in the near or distant future.
+
+There are many valid reasons to deploy RFC1918 space but its use in a
+lab/test environment is not consistent with the production environment.
+
+We also note that LSE-309 appears silent on the issue of RFC1918 address
+space.
+
+
 DNS
 ---
 
