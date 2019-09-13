@@ -4,11 +4,26 @@
 
 .. sectnum::
 
+Introduction
+============
+
+There are a number of usability difficulties with the current Tucson Lab
+network environment, such as no forward/reverse DNS resolution and no internal
+routing.  These deficiencies result in inconvenience and lost productivity for
+end users. It also hinders automated provisioning efforts. Additionally,
+RFC1918 address space is used exclusively, which is inconsistent with the
+production Summit and Base networks.
+
+We propose that transitioning from RFC1918 addresses to routable space, and
+towards a design that more accurately reflects the environment at the Base and
+Summit, combined with refactoring DNS, would resolve many of the usability and
+management limitation with the current architecture.
+
 Known Issues
 ============
 
-Addresing Is Inconsistent With Summit/Base Production Network
--------------------------------------------------------------
+Addresing Scheme Is Inconsistent With Summit/Base Production Network
+--------------------------------------------------------------------
 
 It has been stated that the primary reason for using RFC1918 address space
 in the lab environment was to be consistent with the production network
@@ -199,12 +214,12 @@ provide a usable HTML interface if FQDN URLs and/or ports are embedded in the
 HTML or Javascript.  It is also tedious to setup, especially for accessing
 multiple end points.
 
-end-users are using remote display from the bastion host (nx)
+end users are using remote display from the bastion host (nx)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Due to the limitations and inconvenience of ssh port forwarding, end users are
 resorting to remote displaying a web browser or a complete desktop environment.
-While this does largely resolve the problem for end-users it may start to put
+While this does largely resolve the problem for end users it may start to put
 resource pressure on the bastion host. If end users are allowed to do this
 (which is necessary in order to for perform work), which effectively bypasses
 all access control, the use of a bastion host is not providing any value to end
