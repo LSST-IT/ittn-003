@@ -45,8 +45,8 @@ largely RFC1918 address space in the near or distant future.
 There are many valid reasons to deploy RFC1918 space but its use in a
 lab/test environment is not consistent with the production environment.
 
-We also note that LSE-309 appears silent on the issue of RFC1918 address
-space.
+We also note that `LSE-309 <https://ls.st/LSE-309>`_ appears silent on the
+issue of RFC1918 address space.
 
 
 DNS
