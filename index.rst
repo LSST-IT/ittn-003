@@ -203,3 +203,27 @@ public ``/23`` subnet which is mixed servers and desktops.  As the need for
 external access to services is growing, it seems probably that this practice
 will become more common and defeats the purpose of having an isolated "lab"
 environment.
+
+Network Architecture
+====================
+
+Current
+-------
+
+.. figure:: /_static/lab-current.png
+   :name: fig-lab-current
+   :alt: simplified lab network diagram
+
+Revised With Single Border Router
+---------------------------------
+
+.. figure:: /_static/lab-proposed-shared-router.png
+   :name: fig-lab-proposed-shared-router
+   :alt: revised lab network diagram with shared router
+
+Revised With Lab Dedicated Border Router
+----------------------------------------
+
+.. figure:: /_static/lab-proposed-dedicated-router.png
+   :name: fig-lab-proposed-dedicated router
+   :alt: revised lab network diagram with dedicated router
